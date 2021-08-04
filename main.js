@@ -11,38 +11,33 @@ const linkssFromLocalStorage = JSON.parse(localStorage.getItem('links'))
 
 function render(links, names) {
   let listItems = ''
-  const dictonary = {
-    Jira: 0,
-    Others: 1
-  }
-  for (let x = 0; x < names.length; x++) {
-    if (names in dictonary.keys[0]) {
-      for (let i = 0; i < links.length; i++) {
-        listItems += `
+  const verification = ['Jira','jira']
+  if (verification.includes(names.slice(-1)[0])) {
+    for (let i = 0; i < links.length; i++) {
+      listItems += `
           <li>
             <a target="_blank" href = "${links[i]}">
               ${links[i]}
             </a>
           </li>
         `
-        newJira.innerHTML = listItems //debo de poner un condicional que verifique en el dicc
-      }
-    } else {
-      for (let i = 0; i < links.length; i++) {
-        listItems += `
+    }
+    newJira.innerHTML = listItems //debo de poner un condicional que verifique en el dicc
+  } else {
+    for (let i = 0; i < links.length; i++) {
+      listItems += `
             <li>
               <a target="_blank" href = "${links[i]}">
                 ${links[i]}
               </a>
             </li>
           `
-        newOther.innerHTML = listItems
-      }
     }
+    newOther.innerHTML = listItems
   }
 }
 
-saveBtn.addEventListener("click", function() {
+saveBtn.addEventListener('click', function() {
   links.push(inputLink.value)
   inputLink.value = ''
   localStorage.setItem('links', JSON.stringify(links))
