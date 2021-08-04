@@ -3,7 +3,7 @@ body {
   padding: 10;
   font-family: Arial, Helvetica, sans-serif;
   min-width: 800px;
-  background-color: white;
+  background-color: #FE5C14;
 }
 
 h1 {
@@ -16,9 +16,9 @@ h2 {
 
 button {
     background: #FE5C14;
-    color: black;
+    color: white;
     padding: 10px 20px;
-    border: 1px solid black;
+    border: 1px solid white;
     font-weight: bold;
 }
 
