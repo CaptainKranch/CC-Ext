@@ -7,7 +7,8 @@ const newJira = document.getElementById('jira-links')
 const newOther = document.getElementById('otros-links')
 const saveBtn = document.getElementById('save-btn')
 const deleteBtn = document.getElementById('delete-btn')
-const linkssFromLocalStorage = JSON.parse(localStorage.getItem('links'))
+const linksFromLocalStorage = JSON.parse(localStorage.getItem('links'))
+const namFromLocalStorage = JSON.parse(localStorage.getItem('names'))
 
 function render(links, names) {
   let listItems = ''
@@ -37,12 +38,22 @@ function render(links, names) {
   }
 }
 
+if (linksFromLocalStorage) {
+    links = linksFromLocalStorage
+    render(links, names)
+}
+
 saveBtn.addEventListener('click', function() {
   links.push(inputLink.value)
   inputLink.value = ''
-  localStorage.setItem('links', JSON.stringify(links))
   names.push(inputName.value)
   names.value = ''
-  localStorage.setItem('names', JSON.stringify(names))
+  render(links, names)
+})
+
+deleteBtn.addEventListener('click', function() {
+  localStorage.clear()
+  links = []
+  names = []
   render(links, names)
 })
