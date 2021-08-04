@@ -1,22 +1,23 @@
 let links = [];
-let names = [];
+let tags = [];
 
 const inputTag = document.getElementById('input-name')
 const inputLink = document.getElementById('input-link')
 const newLink = document.getElementById('link-list')
 const saveBtn = document.getElementById('save-btn')
+const tabBtn = document.getElementById('tab-btn')
 const deleteBtn = document.getElementById('delete-btn')
 const linksFromLocalStorage = JSON.parse(localStorage.getItem('links'))
-const namFromLocalStorage = JSON.parse(localStorage.getItem('names'))
+const tagsFromLocalStorage = JSON.parse(localStorage.getItem('tags'))
 
 
-function render(links, names) {
+function render(links, tags) {
   let listItems = ''
   for (let i = 0; i < links.length; i++) {
     listItems += `
           <li>
             <a target="_blank" href = "${links[i]}">
-              ${names[i]}
+              ${tags[i]}
             </a>
           </li>
         `
@@ -24,27 +25,25 @@ function render(links, names) {
   newLink.innerHTML = listItems
 }
 
-if (linksFromLocalStorage) {
+if (linksFromLocalStorage && tagsFromLocalStorage ) {
   links = linksFromLocalStorage
-  render(links)
-}
-
-if (namFromLocalStorage) {
-  names = namFromLocalStorage
-  render(names)
+  tags = tagsFromLocalStorage
+  render(links, tags)
 }
 
 saveBtn.addEventListener('click', function() {
   links.push(inputLink.value)
   inputLink.value = ''
-  names.push(inputTag.value)
-  names.value = ''
-  render(links, names)
+  localStorage.setItem('links', JSON.stringify(links))
+  tags.push(inputTag.value)
+  inputTag.value = ''
+  localStorage.setItem('tags', JSON.stringify(tags))
+  render(links, tags)
 })
 
 deleteBtn.addEventListener('dblclick', function() {
   localStorage.clear()
   links = []
-  names = []
-  render(links, names)
+  tags = []
+  render(links, tags)
 })
