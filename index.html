@@ -4,7 +4,7 @@
   </head>
   <body>
     <header>
-      <img src = 'ezlo.jpg' alt = 'ezlo logo'>
+      <img class = 'ezlo-logo' src = 'ezlo.jpg' alt = 'ezlo logo'>
       <h1>Usefull Links</h1>
     </header>
     <h2>Name</h2>
@@ -12,10 +12,16 @@
     <h2>Link</h2>
     <input type = text id = 'input-link'>
     <h2></h2>
-    <button id = 'save=btn'>Save</button>
+    <button id = 'save-btn'>Save</button>
     <button id = 'delete-btn'>Delete</button>
-    <ul id = 'link-list>'>
-    </ul>
+    <ol id = 'link-list>'>
+      <li>Jira</li>
+        <ul id = 'jira-links'>
+        </ul>
+      <li>Otros</li>
+        <ul id = 'otros-links'>
+        </ul>
+    </ol>
     <script src = 'main.js'></script>
   </body>
 </html>
