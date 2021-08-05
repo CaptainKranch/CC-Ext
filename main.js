@@ -18,6 +18,7 @@ function render(links, tags) {
           <li>
             <a target="_blank" href = "${links[i]}">
               ${tags[i]}
+              <button class= 'deleBtnn'>Delete</button>
             </a>
           </li>
         `

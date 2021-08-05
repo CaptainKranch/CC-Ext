@@ -22,6 +22,10 @@ input {
     margin-bottom: 4px;
 }
 
+.deleBtnn{
+  float: right;
+}
+
 button {
     background: #FE5C14;
     color: white;
