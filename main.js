@@ -18,8 +18,8 @@ function render(links, tags) {
           <li>
             <a target="_blank" href = "${links[i]}">
               ${tags[i]}
-              <button id = 'delete-btn'><i  class= 'fa fa-times'></i></button>
             </a>
+            <button onClick = 'clearBtn()'><i  class= 'fa fa-times'></i></button>
           </li>
         `
   }
@@ -42,9 +42,16 @@ saveBtn.addEventListener('click', function() {
   render(links, tags)
 })
 
-deleteBtn.addEventListener('click', function() {
+deleteBtn.addEventListener('dblclick', function() {
   localStorage.clear()
   links = []
   tags = []
   render(links, tags)
 })
+
+function clearBtn() {
+  localStorage.clear()
+  links = []
+  tags = []
+  render(links, tags)
+}
