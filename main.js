@@ -18,7 +18,7 @@ function render(links, tags) {
           <li>
             <a target="_blank" href = "${links[i]}">
               ${tags[i]}
-              <button class= 'deleBtnn'>Delete</button>
+              <button id = 'delete-btn'><i  class= 'fa fa-times'></i></button>
             </a>
           </li>
         `
@@ -42,7 +42,7 @@ saveBtn.addEventListener('click', function() {
   render(links, tags)
 })
 
-deleteBtn.addEventListener('dblclick', function() {
+deleteBtn.addEventListener('click', function() {
   localStorage.clear()
   links = []
   tags = []
