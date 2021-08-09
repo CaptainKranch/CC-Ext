@@ -26,13 +26,13 @@ function render(links, tags) {
   newLink.innerHTML = listItems
 }
 
-function updateData(linksFromLocalStorage, tagsFromLocalStorage){
-  if (linksFromLocalStorage && tagsFromLocalStorage ) {
-    links = linksFromLocalStorage
-    tags = tagsFromLocalStorage
-    render(links, tags)
-  }
-}
+// function updateData(linksFromLocalStorage, tagsFromLocalStorage){
+//   if (linksFromLocalStorage && tagsFromLocalStorage ) {
+//     links = linksFromLocalStorage
+//     tags = tagsFromLocalStorage
+//     render(links, tags)
+//   }
+// }
 
 if (linksFromLocalStorage && tagsFromLocalStorage ) {
   links = linksFromLocalStorage
@@ -59,20 +59,10 @@ deleteBtn.addEventListener('dblclick', function() {
 
 function clearBtn() {
   let removeTag = inputTag.value
-  // console.log(tagsFromLocalStorage)
-  // console.log(linksFromLocalStorage)
-  console.log(tags)
-  console.log(links)
   if (tagsFromLocalStorage.includes(removeTag)){
-    const indexTags = tagsFromLocalStorage.indexOf(removeTag)
-    tagsFromLocalStorage.splice(indexTags, 1)
-    linksFromLocalStorage.splice(indexTags, 1)
-    // tags = tags.splice(indexTags, 1)
-    // links = links.splice(indexTags, 1)
-    // console.log(tagsFromLocalStorage)
-    // console.log(linksFromLocalStorage)
-    // console.log(tags)
-    // console.log(links)
+    const index = tagsFromLocalStorage.indexOf(removeTag)
+    tagsFromLocalStorage.splice(index, 1)
+    linksFromLocalStorage.splice(index, 1)
     render(links, tags)
   }
 }
