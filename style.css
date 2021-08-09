@@ -6,6 +6,13 @@ body {
   background-color: #FE5C14;
 }
 
+header {
+  margin: auto;
+  width: 85%;
+  /* border: 3px solid green; */
+  padding: 10px;
+  }
+
 h1 {
   color: white;
 }
@@ -20,6 +27,7 @@ input {
     box-sizing: border-box;
     border: 1px solid #5f9341;
     margin-bottom: 4px;
+    border-radius: 25px;
 }
 
 .save-btn{
@@ -32,11 +40,16 @@ button {
     padding: 10px 20px;
     border: none;
     font-weight: bold;
-    float: right;
+    /* float: right; */
 }
 
 ul {
     margin-top: 20px;
     list-style: none;
     padding-left: 0;
+}
+
+a {
+  color: white;
+
 }

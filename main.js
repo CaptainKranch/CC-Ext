@@ -19,11 +19,19 @@ function render(links, tags) {
             <a target="_blank" href = "${links[i]}">
               ${tags[i]}
             </a>
-            <button onClick = 'clearBtn()'><i  class= 'fa fa-times'></i></button>
+            <button  onClick = 'clearBtn()'><i  class= 'fa fa-times'></i></button>
           </li>
         `
   }
   newLink.innerHTML = listItems
+}
+
+function updateData(linksFromLocalStorage, tagsFromLocalStorage){
+  if (linksFromLocalStorage && tagsFromLocalStorage ) {
+    links = linksFromLocalStorage
+    tags = tagsFromLocalStorage
+    render(links, tags)
+  }
 }
 
 if (linksFromLocalStorage && tagsFromLocalStorage ) {
@@ -50,8 +58,21 @@ deleteBtn.addEventListener('dblclick', function() {
 })
 
 function clearBtn() {
-  localStorage.clear()
-  links = []
-  tags = []
-  render(links, tags)
+  let removeTag = inputTag.value
+  // console.log(tagsFromLocalStorage)
+  // console.log(linksFromLocalStorage)
+  console.log(tags)
+  console.log(links)
+  if (tagsFromLocalStorage.includes(removeTag)){
+    const indexTags = tagsFromLocalStorage.indexOf(removeTag)
+    tagsFromLocalStorage.splice(indexTags, 1)
+    linksFromLocalStorage.splice(indexTags, 1)
+    // tags = tags.splice(indexTags, 1)
+    // links = links.splice(indexTags, 1)
+    // console.log(tagsFromLocalStorage)
+    // console.log(linksFromLocalStorage)
+    // console.log(tags)
+    // console.log(links)
+    render(links, tags)
+  }
 }
