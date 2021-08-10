@@ -6,6 +6,7 @@ const inputLink = document.getElementById('input-link')
 const newLink = document.getElementById('link-list')
 const saveBtn = document.getElementById('save-btn')
 const tabBtn = document.getElementById('tab-btn')
+const deleteOneBtn = document.getElementById('delete-one-element-btn')
 const deleteBtn = document.getElementById('delete-btn')
 const linksFromLocalStorage = JSON.parse(localStorage.getItem('links'))
 const tagsFromLocalStorage = JSON.parse(localStorage.getItem('tags'))
@@ -19,20 +20,28 @@ function render(links, tags) {
             <a target="_blank" href = "${links[i]}">
               ${tags[i]}
             </a>
-            <button  onClick = 'clearBtn()'><i  class= 'fa fa-times'></i></button>
           </li>
         `
   }
   newLink.innerHTML = listItems
 }
 
-// function updateData(linksFromLocalStorage, tagsFromLocalStorage){
-//   if (linksFromLocalStorage && tagsFromLocalStorage ) {
-//     links = linksFromLocalStorage
-//     tags = tagsFromLocalStorage
-//     render(links, tags)
-//   }
-// }
+function updateData(linksFromLocalStorage, tagsFromLocalStorage){
+    localStorage.setItem('tags', JSON.stringify(tagsFromLocalStorage))
+    localStorage.setItem('links', JSON.stringify(linksFromLocalStorage))
+    render(links, tags)
+}
+
+function clearBtn() {
+  let removeTag = inputTag.value
+  if (tagsFromLocalStorage.includes(removeTag)){
+    const index = tagsFromLocalStorage.indexOf(removeTag)
+    usu = tagsFromLocalStorage.splice(index, 1)
+    uwu = linksFromLocalStorage.splice(index, 1)
+    inputTag.value = ''
+    updateData(linksFromLocalStorage, tagsFromLocalStorage)
+  }
+}
 
 if (linksFromLocalStorage && tagsFromLocalStorage ) {
   links = linksFromLocalStorage
@@ -50,19 +59,20 @@ saveBtn.addEventListener('click', function() {
   render(links, tags)
 })
 
+deleteOneBtn.addEventListener('click', function clearBtn() {
+  let removeTag = inputTag.value
+  if (tagsFromLocalStorage.includes(removeTag)){
+    const index = tagsFromLocalStorage.indexOf(removeTag)
+    usu = tagsFromLocalStorage.splice(index, 1)
+    uwu = linksFromLocalStorage.splice(index, 1)
+    inputTag.value = ''
+    updateData(linksFromLocalStorage, tagsFromLocalStorage)
+  }
+})
+
 deleteBtn.addEventListener('dblclick', function() {
   localStorage.clear()
   links = []
   tags = []
   render(links, tags)
 })
-
-function clearBtn() {
-  let removeTag = inputTag.value
-  if (tagsFromLocalStorage.includes(removeTag)){
-    const index = tagsFromLocalStorage.indexOf(removeTag)
-    tagsFromLocalStorage.splice(index, 1)
-    linksFromLocalStorage.splice(index, 1)
-    render(links, tags)
-  }
-}
